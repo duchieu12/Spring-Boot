@@ -21,6 +21,9 @@ public class User {
     @Column(name = "username", length = 50, nullable = false, unique = true)
     private String username;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserAddress> userAddresses;
+
 //    @ManyToMany
 //    @JoinTable(
 //            name = "UserAddress",
@@ -32,6 +35,6 @@ public class User {
 //            }
 //    )
 
-    @OneToMany(mappedBy = "user")
-    private List<UserAddress> userAddresses;
+//    @OneToMany(mappedBy = "user")
+//    private List<UserAddress> userAddresses;
 }

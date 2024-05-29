@@ -8,6 +8,9 @@ import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +26,17 @@ public class AddressController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @GetMapping
+    @GetMapping("/all")
     public List<AddressDTO> getAllAddress() {
         List<Address> address = addressService.getAllAddress();
         return modelMapper.map(address, new TypeToken<List<AddressDTO>>(){}.getType());
+    }
+
+    @GetMapping
+    public Page<AddressDTO> getAddresses(Pageable pageable) {
+        Page<Address> addresses = addressService.getAddresses(pageable);
+        List<AddressDTO> dtos = modelMapper.map(addresses.getContent(), new TypeToken<List<AddressDTO>>(){}.getType());
+        return new PageImpl<>(dtos, pageable, addresses.getTotalElements());
     }
 
     @GetMapping("/{id}")

@@ -27,16 +27,24 @@ public class UserAddress {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-//    @MapsId("user_id")
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
-//    @MapsId("address_id")
     private Address address;
+
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+////    @MapsId("user_id")
+//    private User user;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "address_id", referencedColumnName = "id")
+////    @MapsId("address_id")
+//    private Address address;
 
     @Column(name = "registered_at")
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date registeredAt;
+    private Date registerAt;
 }

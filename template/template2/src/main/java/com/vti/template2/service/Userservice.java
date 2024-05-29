@@ -3,6 +3,8 @@ package com.vti.template2.service;
 import com.vti.template2.entity.User;
 import com.vti.template2.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +24,10 @@ public class Userservice implements IUserService {
     @Override
     public User getUserById(int id) {
         return userRepository.findById(id).get();
+    }
+
+    @Override
+    public Page<User> getUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 }

@@ -24,7 +24,10 @@ public class Address {
     @Column(name = "city", length = 50, nullable = false)
     private String city;
 
-//    @ManyToMany(mappedBy = "addresses")
     @OneToMany(mappedBy = "address")
     private List<UserAddress> userAddresses;
+
+//    @ManyToMany(mappedBy = "addresses")
+//    @OneToMany(mappedBy = "address")
+//    private List<UserAddress> userAddresses;
 }
