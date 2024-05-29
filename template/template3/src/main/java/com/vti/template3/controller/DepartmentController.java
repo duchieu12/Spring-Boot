@@ -2,6 +2,7 @@ package com.vti.template3.controller;
 
 import com.vti.template3.dto.DepartmentDTO;
 import com.vti.template3.entity.Department;
+import com.vti.template3.form.DepartmentFilterForm;
 import com.vti.template3.service.IDepartmentService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -33,8 +34,8 @@ public class DepartmentController {
     }
 
     @GetMapping("/all")
-    public List<DepartmentDTO> getAllDepartments() {
-        List<Department> departments = departmentService.getAllDepartments();
+    public List<DepartmentDTO> getAllDepartments(DepartmentFilterForm form) {
+        List<Department> departments = departmentService.getAllDepartments(form);
         return modelMapper.map(departments, new TypeToken<List<DepartmentDTO>>() {
         }.getType());
     }

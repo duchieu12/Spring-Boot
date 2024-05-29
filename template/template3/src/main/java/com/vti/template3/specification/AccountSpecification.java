@@ -19,10 +19,10 @@ public class AccountSpecification {
 
         Specification<Account> whereUsername = new SpecificationImpl(USERNAME, form.getSearch());
 //        Specification<Account> whereDepartmentName = new SpecificationImpl(DEPARTMENT_NAME, form.getSearch());
-//        Specification<Account> whereMinId = new SpecificationImpl(MIN_ID, form.getMinId());
+        Specification<Account> whereMinId = new SpecificationImpl(MIN_ID, form.getMinId());
 
 //        return Specification.where(whereUsername.or(whereDepartmentName)).and(whereMinId);
-        return Specification.where(whereUsername);
+        return Specification.where(whereMinId).and(whereUsername);
     }
 
     @AllArgsConstructor
@@ -32,7 +32,7 @@ public class AccountSpecification {
 
         @Override
         public Predicate toPredicate(Root<Account> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            if (value == null) { return null; }
+            if (this.value == null) { return null; }
 
             switch (this.key) {
                 case USERNAME:
