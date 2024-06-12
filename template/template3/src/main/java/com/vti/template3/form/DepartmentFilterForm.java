@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DepartmentFilterForm {
-    private int minTotalMember;
-    private int maxTotalMember;
+    private Integer minTotalMember;
+    private Integer maxTotalMember;
 }

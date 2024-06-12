@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -15,5 +17,5 @@ public class AccountDTO {
     private String departmentTotalMember;
     private String departmentType;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private String departmentCreatedDate;
+    private Date departmentCreatedDate;
 }

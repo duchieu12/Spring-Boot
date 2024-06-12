@@ -24,7 +24,7 @@ public class DepartmentDTO {
     @NoArgsConstructor
     @Getter
     @Setter
-    public static class AccountDTO {
+    private static class AccountDTO {
         private String username;
     }
 }

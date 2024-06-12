@@ -2,12 +2,13 @@ package com.vti.template3.specification;
 
 import com.vti.template3.entity.Department;
 import com.vti.template3.form.DepartmentFilterForm;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 public class DepartmentSpecification {
     private static final String MIN_TOTAL_MEMBER = "minTotalMember";
@@ -19,7 +20,7 @@ public class DepartmentSpecification {
         Specification<Department> whereMinTotalMember = new SpecificationImpl(MIN_TOTAL_MEMBER, form.getMinTotalMember());
         Specification<Department> whereMaxTotalMember = new SpecificationImpl(MAX_TOTAL_MEMBER, form.getMaxTotalMember());
 
-        return Specification.where(whereMinTotalMember.and(whereMaxTotalMember));
+        return Specification.where(whereMinTotalMember).and(whereMaxTotalMember);
     }
 
     @AllArgsConstructor

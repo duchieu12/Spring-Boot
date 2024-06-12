@@ -7,7 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class AccountFilterForm {
-    private String search;
-    private Integer minId;
+public class LoginForm {
+    private String username;
+    private String password;
 }
